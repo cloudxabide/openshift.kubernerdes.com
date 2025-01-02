@@ -5,13 +5,37 @@ compute:
 - architecture: amd64
   hyperthreading: Enabled
   name: worker
-  platform: {}
+  platform: 
+    aws:
+      rootVolume:
+        iops: 2000
+        size: 500
+        type: io1 
+      metadataService:
+        authentication: Optional 
+      type: c5.4xlarge
+      zones:
+      - $REGION-a
+      - $REGION-b
+      - $REGION-c
   replicas: 3
 controlPlane:
   architecture: amd64
   hyperthreading: Enabled
   name: master
-  platform: {}
+  platform:
+    aws:
+      zones:
+      - $REGION-a
+      - $REGION-b
+      - $REGION-c
+      rootVolume:
+        iops: 4000
+        size: 500
+        type: io1 
+      metadataService:
+        authentication: Optional 
+      type: m6i.xlarge
   replicas: 3
 metadata:
   creationTimestamp: null
@@ -35,6 +59,7 @@ platform:
       fips:          false
       jokes:         dad
       notes:         'Testing extensible tagging'
+fips: false
 publish: External
 pullSecret: '$PULL_SECRET'
 sshKey: '$SSH_KEY'
