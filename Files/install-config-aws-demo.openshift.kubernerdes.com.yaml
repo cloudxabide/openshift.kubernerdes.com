@@ -15,9 +15,9 @@ compute:
         authentication: Optional 
       type: c5.4xlarge
       zones:
-      - $REGION-a
-      - $REGION-b
-      - $REGION-c
+      - ${REGION}a
+      - ${REGION}b
+      - ${REGION}c
   replicas: 3
 controlPlane:
   architecture: amd64
@@ -26,9 +26,9 @@ controlPlane:
   platform:
     aws:
       zones:
-      - $REGION-a
-      - $REGION-b
-      - $REGION-c
+      - ${REGION}a
+      - ${REGION}b
+      - ${REGION}c
       rootVolume:
         iops: 4000
         size: 500
