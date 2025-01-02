@@ -1,0 +1,40 @@
+additionalTrustBundlePolicy: Proxyonly
+apiVersion: v1
+baseDomain: $BASE_DOMAIN
+compute:
+- architecture: amd64
+  hyperthreading: Enabled
+  name: worker
+  platform: {}
+  replicas: 3
+controlPlane:
+  architecture: amd64
+  hyperthreading: Enabled
+  name: master
+  platform: {}
+  replicas: 3
+metadata:
+  creationTimestamp: null
+  name: $CLUSTER_NAME 
+networking:
+  clusterNetwork:
+  - cidr: 10.128.0.0/14
+    hostPrefix: 23
+  machineNetwork:
+  - cidr: 172.18.0.0/16
+  networkType: OVNKubernetes
+  serviceNetwork:
+  - 172.30.0.0/16
+platform:
+  aws:
+    region:          $REGION
+    userTags:
+      adminContact:  jaradtke@amazon.com
+      costCenter:    8675309
+      purpose:       'IPI Installation Testing'
+      fips:          false
+      jokes:         dad
+      notes:         'Testing extensible tagging'
+publish: External
+pullSecret: '$PULL_SECRET'
+sshKey: '$SSH_KEY'
