@@ -53,7 +53,7 @@ platform:
   aws:
     region:          $REGION
     userTags:
-      adminContact:  jaradtke@amazon.com
+      adminContact:  jaradtke+ab-openshift@amazon.com
       costCenter:    8675309
       purpose:       'IPI Installation Testing'
       fips:          false
