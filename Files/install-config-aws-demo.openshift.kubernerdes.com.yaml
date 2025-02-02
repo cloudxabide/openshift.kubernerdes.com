@@ -13,7 +13,7 @@ compute:
         type: io1 
       metadataService:
         authentication: Optional 
-      type: c5.4xlarge
+      type: t3.medium
       zones:
       - ${REGION}a
       - ${REGION}b
@@ -35,7 +35,7 @@ controlPlane:
         type: io1 
       metadataService:
         authentication: Optional 
-      type: m6i.xlarge
+      type: t3.medium
   replicas: 3
 metadata:
   creationTimestamp: null
